@@ -24,18 +24,12 @@ public interface AuthApi {
                                     }
                                     """)
                     })),
-            @ApiResponse(responseCode = "404", description = "로그인 실패",
+            @ApiResponse(responseCode = "401", description = "로그인 실패",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(name = "존재하지 않는 사용자", value = """
                                         {
-                                            "status": "404",
-                                            "message": "정보를 정확히 입력해주세요."
-                                        }
-                                    """),
-                            @ExampleObject(name = "비밀번호 틀림", value = """
-                                        {
-                                            "status": "404",
-                                            "message": "잘못된 비밀번호입니다."
+                                            "status": "401",
+                                            "message": "사용자 ID 또는 비밀번호를 정확히 입력해주세요! "
                                         }
                                     """)
                     }))
@@ -46,7 +40,7 @@ public interface AuthApi {
 
     @Operation(summary = "회원가입", description = "회원가입 시도")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "로그인 성공",
+            @ApiResponse(responseCode = "200", description = "회원가입 성공",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
                                     {

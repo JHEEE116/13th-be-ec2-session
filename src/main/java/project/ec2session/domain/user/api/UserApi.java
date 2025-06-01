@@ -36,15 +36,6 @@ public interface UserApi {
                                         "message": "존재하지 않는 회원입니다."
                                     }
                                     """)
-                    })),
-            @ApiResponse(responseCode = "500", description = "토큰 정보 오류",
-                    content = @Content(mediaType = "application/json", examples = {
-                            @ExampleObject(value = """
-                                    {
-                                        "status": "500",
-                                        "message": "토큰 정보를 재확인 바랍니다."
-                                    }
-                                    """)
                     }))
     })
     ResponseEntity<?> getUserInfo(@AuthenticationPrincipal CustomUserDetails userDetails);
@@ -74,15 +65,6 @@ public interface UserApi {
                                     ]
 
                                     """)
-                    })),
-            @ApiResponse(responseCode = "500", description = "토큰 정보 오류",
-                    content = @Content(mediaType = "application/json", examples = {
-                            @ExampleObject(value = """
-                                    {
-                                        "status": "500",
-                                        "message": "토큰 정보를 재확인 바랍니다."
-                                    }
-                                    """)
                     }))
     })
     ResponseEntity<?> getAllUser();
@@ -103,15 +85,6 @@ public interface UserApi {
                                     {
                                         "status": "404",
                                         "message": "존재하지 않는 회원입니다."
-                                    }
-                                    """)
-                    })),
-            @ApiResponse(responseCode = "500", description = "토큰 정보 오류",
-                    content = @Content(mediaType = "application/json", examples = {
-                            @ExampleObject(value = """
-                                    {
-                                        "status": "500",
-                                        "message": "토큰 정보를 재확인 바랍니다."
                                     }
                                     """)
                     }))

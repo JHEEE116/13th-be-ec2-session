@@ -19,7 +19,6 @@ public interface AuthApi {
             @ApiResponse(responseCode = "200", description = "로그인 성공",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(name = "성공 결과", value = """
-                                    http://3.39.193.186:8080/api/v1/auth/sign-in - POST
                                     {
                                     	"accessToken" : "<accessToken>"
                                     }
@@ -50,7 +49,6 @@ public interface AuthApi {
             @ApiResponse(responseCode = "200", description = "로그인 성공",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
-                                    http://3.39.193.186:8080/api/v1/auth/sign-up - POST
                                     {
                                     	"userId" : "1"
                                     }

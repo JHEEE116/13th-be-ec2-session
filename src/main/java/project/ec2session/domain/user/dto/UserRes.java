@@ -8,7 +8,7 @@ public record UserRes(
          Long userId,
          @Schema(description = "사용자 로그인 ID(이메일 또는 사용자 이름)" , example = "sjh0116")
          String username,
-         @Schema(description = "사용자 이름", example = "JHEEE116")
+         @Schema(description = "사용자 이름", example = "JHEEE00116")
          String nickname
 ) {
     public static UserRes from(User user) {

@@ -21,7 +21,6 @@ public interface UserApi {
             @ApiResponse(responseCode = "200", description = "정보 조회 성공",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
-                                    http://3.39.193.186:8080/api/v1/users/me - GET
                                     {
                                     	"userId": 1,
                                         "username": "test",
@@ -55,7 +54,6 @@ public interface UserApi {
             @ApiResponse(responseCode = "200", description = "전체 사용자 정보 조회 성공",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
-                                    http://3.39.193.186:8080/api/v1/users - GET
                                     [
                                              {
                                                  "userId": 1,
@@ -94,7 +92,6 @@ public interface UserApi {
             @ApiResponse(responseCode = "200", description = "정보 수정 성공",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
-                                    http://3.39.193.186:8080/api/v1/users - PUT
                                     {
                                         "nickname": "새로운 닉네임"
                                     }

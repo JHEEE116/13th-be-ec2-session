@@ -56,11 +56,10 @@ public interface UserApi {
                                                  "username": "test2",
                                                  "nickname": "테스터2"
                                              },
-                                             ...
                                              {
-                                                 "userId": N,
-                                                 "username": "testN",
-                                                 "nickname": "테스터N"
+                                                 "userId": 3,
+                                                 "username": "test3",
+                                                 "nickname": "테스터3"
                                              }
                                     ]
 

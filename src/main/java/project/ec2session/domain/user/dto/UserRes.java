@@ -6,7 +6,7 @@ import project.ec2session.domain.user.entity.User;
 public record UserRes(
         @Schema(description = "사용자 ID" , example = "1")
          Long userId,
-         @Schema(description = "사용자 로그인 ID(이메일 또는 사용자 이름)" , example = "sjh0116")
+         @Schema(description = "사용자 로그인 ID(이메일)" , example = "sjh0116@gmil.com")
          String username,
          @Schema(description = "사용자 이름", example = "JHEEE00116")
          String nickname

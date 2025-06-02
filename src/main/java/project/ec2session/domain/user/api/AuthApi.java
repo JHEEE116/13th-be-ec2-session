@@ -26,7 +26,7 @@ public interface AuthApi {
                     })),
             @ApiResponse(responseCode = "401", description = "로그인 실패",
                     content = @Content(mediaType = "application/json", examples = {
-                            @ExampleObject(name = "존재하지 않는 사용자", value = """
+                            @ExampleObject(name = "사용자 ID 또는 비밀번호 오류", value = """
                                         {
                                             "status": "401",
                                             "message": "사용자 ID 또는 비밀번호를 정확히 입력해주세요! "
@@ -55,6 +55,11 @@ public interface AuthApi {
                                         "password": "비밀번호는 필수 입력 값입니다.",
                                         "nickname": "닉네임은 필수 입력 값입니다.",
                                         "username": "아이디는 필수 입력 값입니다."
+                                    }
+                                    """),
+                            @ExampleObject (name = "비밀번호 형식 체크", value = """
+                                    {
+                                        "password": "비밀번호 형식이 올바르지 않습니다. 8자 이상, 대소문자 포함, 숫자 및 특수문자(@$!%*?&#) 포함"
                                     }
                                     """)
                     }))

@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,17 @@ import project.ec2session.domain.user.dto.UserReq;
 @Tag(name = "[사용자 관련 API]", description = "사용자 관련 API")
 public interface UserApi {
 
-    @Operation(summary = "로그인한 사용자 정보 조회", description = "정보 조회 시도 (인증된 사용자만 접근 가능)")
+    @Operation(
+            summary = "로그인한 사용자 정보 조회",
+            description = """
+            인증 필요
+
+            Authorization 헤더에 아래 형식으로 JWT 토큰을 포함해 요청해야 합니다:
+
+            Authorization: Bearer {Access-Token}
+            """,
+            security = @SecurityRequirement(name = "Bearer Authentication")
+    )
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "정보 조회 성공",
                     content = @Content(mediaType = "application/json", examples = {
@@ -40,7 +51,17 @@ public interface UserApi {
     })
     ResponseEntity<?> getUserInfo(@AuthenticationPrincipal CustomUserDetails userDetails);
 
-    @Operation(summary = "전체 사용자 정보 조회", description = "전체 사용자 정보 조회 시도 (인증된 사용자만 접근 가능)")
+    @Operation(
+            summary = "로그인한 사용자 정보 조회",
+            description = """
+            인증 필요
+
+            Authorization 헤더에 아래 형식으로 JWT 토큰을 포함해 요청해야 합니다:
+
+            Authorization: Bearer {Access-Token}
+            """,
+            security = @SecurityRequirement(name = "Bearer Authentication")
+    )
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "전체 사용자 정보 조회 성공",
                     content = @Content(mediaType = "application/json", examples = {
@@ -68,7 +89,17 @@ public interface UserApi {
     })
     ResponseEntity<?> getAllUser();
 
-    @Operation(summary = "로그인한 사용자 정보 수정", description = "정보 수정 시도 (인증된 사용자만 접근 가능)")
+    @Operation(
+            summary = "로그인한 사용자 정보 조회",
+            description = """
+            인증 필요
+
+            Authorization 헤더에 아래 형식으로 JWT 토큰을 포함해 요청해야 합니다:
+
+            Authorization: Bearer {Access-Token}
+            """,
+            security = @SecurityRequirement(name = "Bearer Authentication")
+    )
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "정보 수정 성공",
                     content = @Content(mediaType = "application/json", examples = {

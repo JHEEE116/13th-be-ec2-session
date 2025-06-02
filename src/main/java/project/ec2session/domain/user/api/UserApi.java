@@ -20,7 +20,7 @@ public interface UserApi {
     @Operation(
             summary = "로그인한 사용자 정보 조회",
             description = """
-            인증 필요
+            사용자 단일 정보 조회 시도 (인증된 사용자만 접근 가능) 
 
             Authorization 헤더에 아래 형식으로 JWT 토큰을 포함해 요청해야 합니다:
 
@@ -28,7 +28,8 @@ public interface UserApi {
             """,
             security = @SecurityRequirement(name = "Bearer Authentication")
     )
-    @ApiResponses({
+//@Operation(summary = "로그인한 사용자 정보 조회", description = "정보 조회 시도 (인증된 사용자만 접근 가능)")
+@ApiResponses({
             @ApiResponse(responseCode = "200", description = "정보 조회 성공",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
@@ -39,6 +40,15 @@ public interface UserApi {
                                     }
                                     """)
                     })),
+        @ApiResponse(responseCode = "403", description = "JWT 토큰 오류로 인한 실패",
+                content = @Content(mediaType = "application/json", examples = {
+                        @ExampleObject(value = """
+                                    {
+                                        "status": "403",
+                                        "message": "토큰 입력 부분을 다시 확인 바랍니다."
+                                    }
+                                    """)
+                })),
             @ApiResponse(responseCode = "404", description = "정보 조회 실패",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
@@ -52,9 +62,9 @@ public interface UserApi {
     ResponseEntity<?> getUserInfo(@AuthenticationPrincipal CustomUserDetails userDetails);
 
     @Operation(
-            summary = "로그인한 사용자 정보 조회",
+            summary = "전체 사용자 정보 조회",
             description = """
-            인증 필요
+            전체 사용자 정보 조회 시도 (인증된 사용자만 접근 가능) 
 
             Authorization 헤더에 아래 형식으로 JWT 토큰을 포함해 요청해야 합니다:
 
@@ -62,7 +72,8 @@ public interface UserApi {
             """,
             security = @SecurityRequirement(name = "Bearer Authentication")
     )
-    @ApiResponses({
+//@Operation(summary = "전체 사용자 정보 조회", description = "전체 사용자 정보 조회 시도 (인증된 사용자만 접근 가능)")
+@ApiResponses({
             @ApiResponse(responseCode = "200", description = "전체 사용자 정보 조회 성공",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
@@ -90,9 +101,9 @@ public interface UserApi {
     ResponseEntity<?> getAllUser();
 
     @Operation(
-            summary = "로그인한 사용자 정보 조회",
+            summary = "사용자 정보 수정",
             description = """
-            인증 필요
+            정보 수정 시도 (인증된 사용자만 접근 가능)
 
             Authorization 헤더에 아래 형식으로 JWT 토큰을 포함해 요청해야 합니다:
 
@@ -100,7 +111,8 @@ public interface UserApi {
             """,
             security = @SecurityRequirement(name = "Bearer Authentication")
     )
-    @ApiResponses({
+//@Operation(summary = "로그인한 사용자 정보 수정", description = "정보 수정 시도 (인증된 사용자만 접근 가능)")
+@ApiResponses({
             @ApiResponse(responseCode = "200", description = "정보 수정 성공!",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
@@ -109,15 +121,24 @@ public interface UserApi {
                                     }
                                     """)
                     })),
-            @ApiResponse(responseCode = "404", description = "정보 조회 실패",
+            @ApiResponse(responseCode = "400", description = "닉네임 누락으로 인한 실패",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
+                                    {
+                                        "status": "400",
+                                        "message": "닉네임은 필수 입력 값입니다."
+                                    }
+                                    """)
+                    })),
+        @ApiResponse(responseCode = "404", description = "정보 조회 실패",
+                content = @Content(mediaType = "application/json", examples = {
+                        @ExampleObject(value = """
                                     {
                                         "status": "404",
                                         "message": "존재하지 않는 회원입니다."
                                     }
                                     """)
-                    }))
+                }))
     })
     ResponseEntity<?> updateUserInfo(@AuthenticationPrincipal CustomUserDetails userDetails,
                                      @RequestBody @Valid UserReq.UpdateInfo request);

@@ -26,7 +26,7 @@ public interface UserApi {
 
             Authorization: Bearer {Access-Token}
             """,
-            security = @SecurityRequirement(name = "Bearer Authentication")
+            security = @SecurityRequirement(name = "")
     )
 //@Operation(summary = "로그인한 사용자 정보 조회", description = "정보 조회 시도 (인증된 사용자만 접근 가능)")
 @ApiResponses({
@@ -70,7 +70,7 @@ public interface UserApi {
 
             Authorization: Bearer {Access-Token}
             """,
-            security = @SecurityRequirement(name = "Bearer Authentication")
+            security = @SecurityRequirement(name = "")
     )
 //@Operation(summary = "전체 사용자 정보 조회", description = "전체 사용자 정보 조회 시도 (인증된 사용자만 접근 가능)")
 @ApiResponses({
@@ -103,13 +103,13 @@ public interface UserApi {
     @Operation(
             summary = "사용자 정보 수정",
             description = """
-            정보 수정 시도 (인증된 사용자만 접근 가능)
+            사용자 정보 수정 시도 (인증된 사용자만 접근 가능)
 
             Authorization 헤더에 아래 형식으로 JWT 토큰을 포함해 요청해야 합니다:
 
             Authorization: Bearer {Access-Token}
             """,
-            security = @SecurityRequirement(name = "Bearer Authentication")
+            security = @SecurityRequirement(name = "") //Bearer Authentication
     )
 //@Operation(summary = "로그인한 사용자 정보 수정", description = "정보 수정 시도 (인증된 사용자만 접근 가능)")
 @ApiResponses({

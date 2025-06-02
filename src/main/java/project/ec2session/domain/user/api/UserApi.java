@@ -101,7 +101,7 @@ public interface UserApi {
             security = @SecurityRequirement(name = "Bearer Authentication")
     )
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "정보 수정 성공",
+            @ApiResponse(responseCode = "200", description = "정보 수정 성공!",
                     content = @Content(mediaType = "application/json", examples = {
                             @ExampleObject(value = """
                                     {
